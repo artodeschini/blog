@@ -4,13 +4,15 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h2>Novo Artigo</h2>
+            <h2>Editar Artigo</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/articles/save">
+            <form method="POST" action="/admin/articles/update">
+                <input type="hidden" name="id" value="<%= article.id %>"/>
                 <label for="title">Titulo do Artigo</label>
                 <input type="text" name="title" class="form-control"
-                    placeholder="Defina o titulo do Artigo"/>
+                    placeholder="Defina o titulo do Artigo"
+                    value="<%= article.title %>"/>
                 <br>
                 <label for="category">Categoria</label>
                 <select name="category" class="form-control">
@@ -21,9 +23,9 @@
                 <br>
                 <label for="body">Corpo do Artigo</label>
                 <textarea id="article" class="form-control" placeholder="Corpo do Artigo" 
-                    name="body"></textarea>
+                    name="body"><%= article.body %></textarea>
                 <br>
-                <button class="btn btn-success">Cadastrar</button>
+                <button class="btn btn-success">Editar</button>
             </form>
     </div>
     </div>

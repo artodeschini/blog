@@ -18,10 +18,16 @@ const Article = connection.define('articles', {
     }
 });
 
-Category.hasMany(Article);      // uma categoria tem muitos artigos
+
+// User.hasMany(Post, {foreignKey: 'user_id'})
+// Post.belongsTo(User, {foreignKey: 'user_id'})
+
+// Post.find({ where: { ...}, include: [User]})
+
+Category.hasMany(Article, {foreignKey: 'categoryId'});      // uma categoria tem muitos artigos
 
                                 // um artigo pertece a uma categoria
-Article.belongsTo(Category);    // relacionamento de artigo com categoria
+Article.belongsTo(Category, {foreignKey: 'categoryId'});    // relacionamento de artigo com categoria
 
 // Article.sync({force: true});
 
