@@ -26,6 +26,8 @@ npm init
 ```bash
 npm install --save express
 npm install --save sequelize
+npm install --save mysql2
+npm install --save slugify
 ```
 
 ## start app to developer
