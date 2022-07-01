@@ -116,5 +116,43 @@ router.post("/admin/articles/update", (req, res) => {
     })
 });
 
+router.get("/articles/page/:num", (req, res) => {
+    const itens = 4;
+    let page = req.params.num;
+    var offset;
+
+    if (isNaN(page) || page == 1) {
+        offset = 0;
+    } else {
+        offset = parseInt(page) * itens;
+    }
+
+    Article.findAndCountAll({
+        limit: itens,
+        offset: offset,
+        order: [
+            ['id', 'DESC']
+        ]
+    }).then(articles => {
+        
+        let next = true;
+
+        if (offset + itens >= articles.count) {
+            next = false;
+        }
+        
+        let result = {
+            next: next,
+            articles: articles
+        }
+
+        Category.findAll().then(categories => {
+            res.render("index", {result: result, categories: categories});
+        });
+
+        res.json(result);
+    })
+
+});
 
 module.exports = router;
