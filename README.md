@@ -28,6 +28,8 @@ npm install --save express
 npm install --save sequelize
 npm install --save mysql2
 npm install --save slugify
+npm install --save bcryptjs
+npm install express-session --save
 ```
 
 ## start app to developer

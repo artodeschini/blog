@@ -25,7 +25,7 @@
                 <td><%= categories.get(article.categoryId).title %></td>
                 <td>
                     <a href="/admin/articles/edit/<%= article.id %>" class="btn btn-warning">Editar</a>
-                    <form method="POST" action="/articles/delete" style="display: inline" onsubmit="checkDeleteCategory(event, this)">
+                    <form method="POST" action="/articles/delete" style="display: inline" onsubmit="checkDeleteCategory(event, this, 'o artigo')">
                         <input type="hidden" name="id" value="<%= article.id %>"/>
                         <button class="btn btn-danger">Deletar</button>
                     </form>
@@ -36,7 +36,7 @@
     </table>
 </div>
 
-<script>
+<!-- <script>
     function checkDeleteCategory(event, form) {
         event.preventDefault();
         var decision = confirm("Você deseja deletar o Artigo?");
@@ -47,6 +47,6 @@
             console.log("delecao cancelada pelo usuario");
         }
     }
-</script>
+</script> -->
 
 <%- include('../../partials/footer.ejs'); %>
